@@ -39,8 +39,12 @@ post '/jugar' do
 		@puntos1="5"
 		@puntos2="5"
 	end
-
-
+	if @puntos1=="5" || @punto1=="7"
+		redirect "/ganador"
+	end
+	if @puntos2=="5" || @punto2=="7"
+		redirect "/ganador2"
+	end
 		
 	@punto_tenis={0=>"0",1=>"15",2=>"30",3=>"40",4=>"Ganador",5=>"Deuce",6=>"A",7=>"Ganador"}
   erb :jugar
@@ -49,4 +53,9 @@ end
 
 post '/ganador' do
 	erb :ganador
+end
+
+
+post '/ganador2' do
+	erb :ganador2
 end
