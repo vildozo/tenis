@@ -1,5 +1,6 @@
 <%=@jugador1%> vs <%=@jugador2%>
 
+
 <p></p>
 <p><%=@punto_tenis[@puntos1.to_i]%> jugador1</p>
 <p><%=@punto_tenis[@puntos2.to_i]%> jugador2</p>
@@ -8,6 +9,7 @@
 	<input type="hidden" name="jugador2" value=<%=@jugador2%> >
 	<input type="hidden" name="puntos1" value=<%=@puntos1%> >
 	<input type="hidden" name="puntos2" value=<%=@puntos2%> >
+	<input type="hidden" name="ganador" value=<%=@ganador%> >
 	<input type="hidden" name="anota" value="1" >
 <p><input type="submit" value="Anota_Jugador1"></p>
 </form>
@@ -17,6 +19,7 @@
 	<input type="hidden" name="jugador2" value=<%=@jugador2%> >
 	<input type="hidden" name="puntos1" value=<%=@puntos1%> >
 	<input type="hidden" name="puntos2" value=<%=@puntos2%> >
+		<input type="hidden" name="ganador" value=<%=@ganador%> >
 	<input type="hidden" name="anota" value="2" >
 <p><input type="submit" value="Anota_Jugador2"></p>
 </form>
