@@ -12,3 +12,5 @@ Feature: Iniciar
 		And llenar el campo "jugador2" con "Jorge"
 		When presiono el boton "Jugar"
 		Then deberia ver "Luis vs Jorge"
+
+	
