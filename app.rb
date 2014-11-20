@@ -5,6 +5,7 @@ get '/' do
 end
 
 post '/jugar' do
+	@punto_tenis={0=>"0",1=>"15",2=>"30",3=>"40",4=>"Deuce",5=>"A",6=>"Ganador"}
 	@punto=0
 	@anota=params[:anota]
 	@jugador1=params[:jugador1]
@@ -13,6 +14,12 @@ post '/jugar' do
 	@puntos2=params[:puntos2]
 	@ganador=params[:ganador]
 	
+	if @puntos1=="6"
+		redirect "/ganador"
+	end
+	if @puntos2=="6"
+		redirect "/ganador2"
+	end
 
 	if @puntos1=="5" && @puntos2=="5"
 			@puntos1="4"
@@ -23,15 +30,21 @@ post '/jugar' do
 		@puntos=@puntos1.to_i
 		@puntos+=1
 		@puntos1=@puntos.to_s
+		if @puntos1=="4" && @puntos2<="2"
+			redirect "/ganador"
+		end
 
-		
 	elsif @anota=="2"
 		@puntos=@puntos2.to_i
 		@puntos+=1
 		@puntos2=@puntos.to_s
-		if @puntos1=="6" && @puntos2=="6"
-			@puntos1="5"
-			@puntos2="5"
+		if @puntos2=="4" && @puntos1<="2"
+			redirect "/ganador2"
+		end
+
+		if @puntos1=="5" && @puntos2=="5"
+			@puntos1="4"
+			@puntos2="4"
 		end
 
 	end
@@ -39,23 +52,18 @@ post '/jugar' do
 		@puntos1="5"
 		@puntos2="5"
 	end
-	if @puntos1=="5" || @punto1=="7"
-		redirect "/ganador"
-	end
-	if @puntos2=="5" || @punto2=="7"
-		redirect "/ganador2"
-	end
+
 		
-	@punto_tenis={0=>"0",1=>"15",2=>"30",3=>"40",4=>"Ganador",5=>"Deuce",6=>"A",7=>"Ganador"}
+	
   erb :jugar
 end
 
 
-post '/ganador' do
+get '/ganador' do
 	erb :ganador
 end
 
 
-post '/ganador2' do
+get '/ganador2' do
 	erb :ganador2
 end
