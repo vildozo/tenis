@@ -11,16 +11,22 @@ post '/jugar' do
 	@jugador2=params[:jugador2]
 	@puntos1=params[:puntos1].to_i
 	@puntos2=params[:puntos2].to_i
+
 	
-	if( (@puntos1==6) || ( @puntos1==4 &&  @puntos2 <= 1) )
+	if( (@puntos1==6) || ( @puntos1==4 &&  @puntos2 <= 2) )
 		redirect "/ganador"
 	else
-		if( (@puntos2==6) || ( @puntos2==4 &&  @puntos1 <= 1) )
+		if( (@puntos2==6) || ( @puntos2==4 &&  @puntos1 <= 2) )
 			redirect "/ganador2"
 		end
 	end
 
 	if(@puntos2==@puntos1 && @puntos2==5)
+		@puntos1=4
+		@puntos2=4
+	end
+
+	if(@puntos2==@puntos1 && @puntos2==3)
 		@puntos1=4
 		@puntos2=4
 	end
