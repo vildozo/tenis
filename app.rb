@@ -1,5 +1,7 @@
 require 'sinatra'
 
+
+
 get '/' do
   erb :bienvenido
 end
@@ -21,21 +23,11 @@ post '/jugar' do
 		end
 	end
 
-	if(@puntos2==@puntos1 && @puntos2==5)
+	if(@puntos2==@puntos1 && (@puntos2==5||@puntos2==3))
 		@puntos1=4
 		@puntos2=4
 	end
 
-	if(@puntos2==@puntos1 && @puntos2==3)
-		@puntos1=4
-		@puntos2=4
-	end
-
-
-
-
-		
-	
   erb :jugar
 end
 
